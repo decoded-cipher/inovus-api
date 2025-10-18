@@ -1,5 +1,8 @@
 build:
-	@go build -o bin/inovus-api cmd/main.go
+	@go build -o bin/inovus-api ./cmd/...
 
 run:
-	@air
+	@$(HOME)/go/bin/air
+
+tidy:
+	@go mod tidy

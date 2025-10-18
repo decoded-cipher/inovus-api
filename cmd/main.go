@@ -1,23 +1,29 @@
 package main
 
 import (
+	"log"
+
+	"github.com/decoded-cipher/inovus-api/config"
 	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
 )
 
-// Initialize the HTTP server with middleware
-func initHTTPServer() *echo.Echo {
-	var server = echo.New()
-
-	server.Use(middleware.Logger())
-	server.Use(middleware.Recover())
-
-	return server
-}
-
-// Entry point of the application
 func main() {
-	server := initHTTPServer()
+	// Connect to database
+	if err := config.ConnectDatabase(); err != nil {
+		log.Fatalf("Database connection failed: %v", err)
+	}
+	defer config.CloseDatabase()
+
+	// Initialize server
+	server := echo.New()
+	// server.Use(middleware.Logger())
+	// server.Use(middleware.Recover())
+
+	// Setup routes
 	InitHTTPHandler(server)
-	server.Start(":8080")
+
+	// Start server
+	port := ":" + config.GetServerPort()
+	log.Printf("Server starting on %s", port)
+	server.Start(port)
 }

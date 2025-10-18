@@ -1,13 +1,15 @@
 module github.com/decoded-cipher/inovus-api
 
-go 1.25.2
+go 1.23.0
 
 require github.com/labstack/echo/v4 v4.13.4
 
-require github.com/lib/pq v1.10.9
+require (
+	github.com/gofrs/uuid v4.4.0+incompatible
+	github.com/lib/pq v1.10.9
+)
 
 require (
-	github.com/gofrs/uuid v4.4.0+incompatible // indirect
 	github.com/labstack/gommon v0.4.2 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
@@ -17,5 +19,4 @@ require (
 	golang.org/x/net v0.40.0 // indirect
 	golang.org/x/sys v0.33.0 // indirect
 	golang.org/x/text v0.25.0 // indirect
-	golang.org/x/time v0.11.0 // indirect
 )

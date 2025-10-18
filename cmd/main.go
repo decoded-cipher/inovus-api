@@ -9,10 +9,10 @@ import (
 
 func main() {
 	// Connect to database
-	if err := config.ConnectDatabase(); err != nil {
-		log.Fatalf("Database connection failed: %v", err)
-	}
-	defer config.CloseDatabase()
+	// if err := config.ConnectDatabase(); err != nil {
+	// 	log.Fatalf("Database connection failed: %v", err)
+	// }
+	// defer config.CloseDatabase()
 
 	// Initialize server
 	server := echo.New()

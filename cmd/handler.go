@@ -7,8 +7,12 @@ func InitHTTPHandler(server *echo.Echo) {
 	// Base routes
 	server.GET("/", baseHandler)
 	server.GET("/health", HealthCheckHandler)
-	
+
 	// User routes
 	userGroup := server.Group("/users")
-	userGroup.GET("/all", getAllUsers)
+	userGroup.GET("", getAllUsers)
+	userGroup.GET("/:id", getUser)
+	userGroup.POST("", createUser)
+	userGroup.PUT("/:id", updateUser)
+	userGroup.DELETE("/:id", deleteUser)
 }

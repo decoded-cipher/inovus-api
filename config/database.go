@@ -1,15 +1,15 @@
 package config
 
 import (
-	"database/sql"
 	"fmt"
 	"log"
 	"os"
 
+	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 )
 
-var DB *sql.DB
+var DB *sqlx.DB
 
 // ConnectDatabase establishes a database connection
 func ConnectDatabase() error {
@@ -23,13 +23,9 @@ func ConnectDatabase() error {
 		getEnv("DB_SSLMODE", "disable"),
 	)
 
-	db, err := sql.Open("postgres", conn)
+	db, err := sqlx.Connect("postgres", conn)
 	if err != nil {
-		return fmt.Errorf("failed to open database: %w", err)
-	}
-
-	if err := db.Ping(); err != nil {
-		return fmt.Errorf("failed to ping database: %w", err)
+		return fmt.Errorf("failed to connect to database: %w", err)
 	}
 
 	DB = db

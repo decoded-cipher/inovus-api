@@ -47,6 +47,3 @@ temp/
 *.db
 *.sqlite
 *.sqlite3
-
-# Air (live reload tool)
-tmp/

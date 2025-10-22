@@ -5,7 +5,8 @@ go 1.23.0
 require github.com/labstack/echo/v4 v4.13.4
 
 require (
-	github.com/gofrs/uuid v4.4.0+incompatible
+	github.com/jmoiron/sqlx v1.4.0
+	github.com/knadh/goyesql/v2 v2.2.0
 	github.com/lib/pq v1.10.9
 )
 
@@ -19,4 +20,5 @@ require (
 	golang.org/x/net v0.40.0 // indirect
 	golang.org/x/sys v0.33.0 // indirect
 	golang.org/x/text v0.25.0 // indirect
+	golang.org/x/time v0.11.0 // indirect
 )
